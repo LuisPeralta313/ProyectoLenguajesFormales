@@ -1,0 +1,4 @@
+C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.AssemblyReference.cache
+C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.Properties.Resources.resources
+C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.GenerateResource.cache
+C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.CoreCompileInputs.cache

@@ -40,11 +40,51 @@ namespace Proyecto_Fase_Uno
                 contadorLineas++;
                 if (!string.IsNullOrWhiteSpace(lineaActual) && !string.IsNullOrEmpty(lineaActual))
                 {
+                    primeraLinea = false;
+                    if (lineaActual.Contains("SETS"))
+                    {
+                        conjuntosExistentes = true;
+                        MensajeResultado = "Gramática Válida :D";
+                    }
+                    else if (lineaActual.Contains("TOKENS"))
+                    {
+                        tokensExistentes = true;
+                        MensajeResultado = "Formato Correcto";
+                    }
+                    else
+                    {
+                        linea = 1;
+                        return "Error en la línea 1: Se esperaba SET o TOKENS";
 
 
 
-
+                    }
                 }
+                else if (conjuntosExistentes)  ///walter
+                {
+                    Match conjuntoCoincide = Regex.Match(lineaActual, Expresion_Regular_SETS);
+                    if (lineaActual.Contains("TOKENS"))
+                    {
+                        if (cantidadConjuntos < 1)
+                        {
+                            linea = contadorLineas;
+                            return "Error: Se esperaba al menos un SET";
+                        }
+                        conjuntosExistentes = false;
+                        tokensExistentes = true;
+                    }
+                    else
+                    {
+                        if (!conjuntoCoincide.Success)
+                        {
+                            return $"Error en la línea: {contadorLineas}";
+                        }
+                        cantidadTokens++;
+                    }
+
+                    cantidadConjuntos++;
+                }
+
             }
         }
     }
