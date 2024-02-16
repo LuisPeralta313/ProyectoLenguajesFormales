@@ -2,3 +2,8 @@ C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Pro
 C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.Properties.Resources.resources
 C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.GenerateResource.cache
 C:\Users\wally\Desktop\Lenguajes\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.CoreCompileInputs.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.AssemblyReference.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.SuggestedBindingRedirects.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.Properties.Resources.resources
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.GenerateResource.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.CoreCompileInputs.cache

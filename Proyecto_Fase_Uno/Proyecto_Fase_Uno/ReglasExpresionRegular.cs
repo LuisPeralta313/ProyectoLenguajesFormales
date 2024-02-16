@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Proyecto_Fase_Uno
 {
@@ -40,51 +41,97 @@ namespace Proyecto_Fase_Uno
                 contadorLineas++;
                 if (!string.IsNullOrWhiteSpace(lineaActual) && !string.IsNullOrEmpty(lineaActual))
                 {
-                    primeraLinea = false;
-                    if (lineaActual.Contains("SETS"))
+                    if (primeraLinea == true)
                     {
-                        conjuntosExistentes = true;
-                        MensajeResultado = "Gramática Válida :D";
-                    }
-                    else if (lineaActual.Contains("TOKENS"))
-                    {
-                        tokensExistentes = true;
-                        MensajeResultado = "Formato Correcto";
-                    }
-                    else
-                    {
-                        linea = 1;
-                        return "Error en la línea 1: Se esperaba SET o TOKENS";
-
-
-
-                    }
-                }
-                else if (conjuntosExistentes)  ///walter
-                {
-                    Match conjuntoCoincide = Regex.Match(lineaActual, Expresion_Regular_SETS);
-                    if (lineaActual.Contains("TOKENS"))
-                    {
-                        if (cantidadConjuntos < 1)
+                        primeraLinea = false;
+                        if (lineaActual.Contains("SETS"))
                         {
-                            linea = contadorLineas;
-                            return "Error: Se esperaba al menos un SET";
+                            conjuntosExistentes = true;
+                            MensajeResultado = "Gramática Válida :D";
                         }
-                        conjuntosExistentes = false;
-                        tokensExistentes = true;
+                        else if (lineaActual.Contains("TOKENS"))
+                        {
+                            tokensExistentes = true;
+                            MensajeResultado = "Formato Correcto";
+                        }
+                        else
+                        {
+                            linea = 1;
+                            return "Error en la línea 1: Se esperaba SET o TOKENS";
+                        }
                     }
-                    else
+                    else if (conjuntosExistentes == true)  ///walter
                     {
-                        if (!conjuntoCoincide.Success)
+                        Match conjuntoCoincide = Regex.Match(lineaActual, Expresion_Regular_SETS);
+                        if (lineaActual.Contains("TOKENS"))
+                        {
+                            if (cantidadConjuntos < 1)
+                            {
+                                linea = contadorLineas;
+                                return "Error: Se esperaba al menos un SET";
+                            }
+                            conjuntosExistentes = false;
+                            tokensExistentes = true;
+                        }
+                        else
+                        {
+                            if (!conjuntoCoincide.Success)
+                            {
+                                return $"Error en la línea: {contadorLineas}";
+                            }
+                            cantidadTokens++;
+                        }
+
+                        cantidadConjuntos++;
+                    }
+                    else if (tokensExistentes == true)
+                    {
+                        Match coincideToken = Regex.Match(lineaActual, Expresion_Regular_TOKENS);
+                        if (lineaActual.Contains("ACTIONS"))
+                        {
+                            if (cantidadTokens < 1)
+                            {
+                                linea = contadorLineas;
+                                return "Error: Se esperaba al menos un TOKEN";
+                            }
+                            cantidadAcciones++;
+                            tokensExistentes = false;
+                            accionesExistentes = true;
+                        }
+                        else
+                        {
+                            if (!coincideToken.Success)
+                            {
+                                return $"Error en la línea: {contadorLineas}";
+                            }
+                            cantidadTokens++;
+                        }
+
+                    }
+                    else if (accionesExistentes == true)
+                    {
+                        if (lineaActual.Contains("ERROR"))
+                        {
+                            accionesError++;
+                        }
+                        Match coincideAccion = Regex.Match(lineaActual, Expresion_Regular_ACCIONES_Y_ERRORES);
+                        if (!coincideAccion.Success)
                         {
                             return $"Error en la línea: {contadorLineas}";
                         }
-                        cantidadTokens++;
                     }
 
-                    cantidadConjuntos++;
                 }
-
+                if (cantidadAcciones < 1)
+                {
+                    return $"Error: Ausencia de ACCIONES";
+                }
+                if (accionesError < 1)
+                {
+                    return $"Error: Ausencia de ERROR";
+                }
+                linea = contadorLineas;
+                return MensajeResultado;
             }
         }
     }
