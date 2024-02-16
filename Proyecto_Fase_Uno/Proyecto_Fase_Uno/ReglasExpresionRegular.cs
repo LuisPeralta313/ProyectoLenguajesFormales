@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Proyecto_Fase_Uno
 {
+
     internal class ReglasExpresionRegular
     {
 
@@ -41,7 +42,7 @@ namespace Proyecto_Fase_Uno
                 contadorLineas++;
                 if (!string.IsNullOrWhiteSpace(lineaActual) && !string.IsNullOrEmpty(lineaActual))
                 {
-                    if (primeraLinea == true)
+                    if (primeraLinea)
                     {
                         primeraLinea = false;
                         if (lineaActual.Contains("SETS"))
@@ -57,10 +58,10 @@ namespace Proyecto_Fase_Uno
                         else
                         {
                             linea = 1;
-                            return "Error en la línea 1: Se esperaba SET o TOKENS";
+                            return "Error en la línea 1: Se esperaba SET o TOKENS";
                         }
                     }
-                    else if (conjuntosExistentes == true)  ///walter
+                    else if (conjuntosExistentes)  ///walter
                     {
                         Match conjuntoCoincide = Regex.Match(lineaActual, Expresion_Regular_SETS);
                         if (lineaActual.Contains("TOKENS"))
@@ -84,7 +85,7 @@ namespace Proyecto_Fase_Uno
 
                         cantidadConjuntos++;
                     }
-                    else if (tokensExistentes == true)
+                    else if (tokensExistentes) //rodrigol
                     {
                         Match coincideToken = Regex.Match(lineaActual, Expresion_Regular_TOKENS);
                         if (lineaActual.Contains("ACTIONS"))
@@ -106,9 +107,8 @@ namespace Proyecto_Fase_Uno
                             }
                             cantidadTokens++;
                         }
-
                     }
-                    else if (accionesExistentes == true)
+                    else if (accionesExistentes)
                     {
                         if (lineaActual.Contains("ERROR"))
                         {
@@ -120,19 +120,19 @@ namespace Proyecto_Fase_Uno
                             return $"Error en la línea: {contadorLineas}";
                         }
                     }
-
                 }
-                if (cantidadAcciones < 1)
-                {
-                    return $"Error: Ausencia de ACCIONES";
-                }
-                if (accionesError < 1)
-                {
-                    return $"Error: Ausencia de ERROR";
-                }
-                linea = contadorLineas;
-                return MensajeResultado;
             }
+            if (cantidadAcciones < 1)
+            {
+                return $"Error: Ausencia de ACCIONES";
+            }
+            if (accionesError < 1)
+            {
+                return $"Error: Ausencia de ERROR";
+            }
+            linea = contadorLineas;
+            return MensajeResultado;
         }
+
     }
 }
