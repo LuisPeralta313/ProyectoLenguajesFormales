@@ -10,13 +10,13 @@ namespace Proyecto_Fase_Uno
 
     internal class ReglasExpresionRegular
     {
-
+        //Aquí van las Expresiones regulares  para validar secciones específicas del archivo de gramática
         public static string Expresion_Regular_ACCIONES_Y_ERRORES = @"^((\s*RESERVADAS\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*)+|}+\s*|(\s*([A-Z]|[a-z]|[0-9])\s*\(\s*\)\s*)+|{+\s*|(\s*[0-9]+\s*=\s*'([A-Z]|[a-z]|[0-9])+'\s*|}+\s)*(\s*ERROR\s*=\s*[0-9]+\s*))$";
 
         public static string Expresion_Regular_SETS = @"^(\s*([A-Z])+\s*=\s*((((\'([A-Z]|[a-z]|[0-9]|_)\'\.\.\'([A-Z]|[a-z]|[0-9]|_)\')\+)*(\'([A-z]|[a-z]|[0-9]|_)\'\.+\'([A-z]|[a-z]|[0-9]|_)\')*(\'([A-z]|[a-z]|[0-9]|_)\')+)|(CHR\(+([0-9])+\)+\.\.CHR\(+([0-9])+\)+)+)\s*)";
 
         public static string Expresion_Regular_TOKENS = @"^(\s*TOKEN\s*[0-9]+\s*=\s*(([A-Z]+)|((\'*)([a-z]|[A-Z]|[1-9]|(\<|\>|\=|\+|\-|\*|\(|\)|\{|\}|\[|\]|\.|\,|\:|\;))(\'))+|((\||\'|\*|\?|\[|\]|\{|\}|\(|\)|\\)*\s*([A-Z]|[a-z]|[0-9]|\')*\s*(\||\'|\*|\?|\[|\]|\{|\}|\(|\)|\\)*\s*([A-Z]|[a-z]|[0-9])*\s*\)*\s*(\||\'|\*|\?|\[|\]|\{|\}|\(|\)|\\)*\s*\{*\s*([A-Z]|[a-z]|[0-9])*\s*(\||\'|\*|\?|\[|\]|\{|\}|\(|\)|\\)*\s*(\||\'|\*|\?|\[|\]|\{|\}|\(|\)|\\)*\s*)+)+)";
-
+        //----------------------------------------------------------------------------------
 
         public string Archivo(string data, ref int linea)
         {
@@ -35,10 +35,11 @@ namespace Proyecto_Fase_Uno
             bool tokensExistentes = false;
             bool accionesExistentes = false;
             string MensajeResultado = "";
+            //Hay que dividir la cadena en líneas
+            string[] lineas = data.Split('\n');  
+            int contadorLineas = 0;  //Para los Errores, rastreador
 
-            string[] lineas = data.Split('\n');
-            int contadorLineas = 0;  //Para los Errores
-
+            //ForEach para iterar sobre cada línea del archivo
             foreach (var lineaActual in lineas)
             {
                 contadorLineas++;
@@ -47,7 +48,7 @@ namespace Proyecto_Fase_Uno
                     if (primeraLinea)
                     {
                         primeraLinea = false;
-                        if (lineaActual.Contains("SETS"))
+                        if (lineaActual.Contains("SETS")) // Verifica si la primera línea contiene "SETS" o "TOKENS"
                         {
                             conjuntosExistentes = true;
                             MensajeResultado = "Gramática Válida :D";
@@ -62,7 +63,7 @@ namespace Proyecto_Fase_Uno
                         }
                         else
                         {
-                            linea = 1;
+                            linea = 1;  // Si la primera línea no contiene "SETS" ni "TOKENS", se devuelve un error
                             return "Error en la línea 1: Se esperaba SET o TOKENS";
                         }
                     }
@@ -71,7 +72,7 @@ namespace Proyecto_Fase_Uno
                         Match conjuntoCoincide = Regex.Match(lineaActual, Expresion_Regular_SETS);
                         if (lineaActual.Contains("TOKENS"))
                         {
-                            if (cantidadConjuntos < 1)
+                            if (cantidadConjuntos < 1) // Verifica si hay al menos un conjunto antes de pasar a TOKENS
                             {
                                 linea = contadorLineas;
                                 return "Error: Se esperaba al menos un SET";
@@ -90,12 +91,13 @@ namespace Proyecto_Fase_Uno
 
                         cantidadConjuntos++;
                     }
+                    // Verifica secciones de tokens
                     else if (tokensExistentes) //rodrigol
                     {
                         Match coincideToken = Regex.Match(lineaActual, Expresion_Regular_TOKENS);
                         if (lineaActual.Contains("ACTIONS"))
                         {
-                            if (cantidadTokens < 1)
+                            if (cantidadTokens < 1) // Verifica si hay al menos un TOKEN antes de pasar a ACTIONS
                             {
                                 linea = contadorLineas;
                                 return "Error: Se esperaba al menos un TOKEN";
@@ -106,7 +108,7 @@ namespace Proyecto_Fase_Uno
                         }
                         else
                         {
-                            if (!coincideToken.Success)
+                            if (!coincideToken.Success) // Si no coincide con la expresión regular de tokens, se devuelve un error
                             {
                                 return $"Error en la línea: {contadorLineas}";
                             }
@@ -122,12 +124,12 @@ namespace Proyecto_Fase_Uno
                         Match coincideAccion = Regex.Match(lineaActual, Expresion_Regular_ACCIONES_Y_ERRORES);
                         if (!coincideAccion.Success)
                         {
-                            return $"Error en la línea: {contadorLineas}";
+                            return $"Error en la línea: {contadorLineas}"; // Si no coincide con la expresión regular de acciones y errores, se devuelve un error
                         }
                     }
                 }
             }
-            if (cantidadAcciones < 1)
+            if (cantidadAcciones < 1)  // Verifica si hay al menos una ACCIÓN y un ERROR al final del archivo
             {
                 return $"Error: Ausencia de ACCIONES";
             }
