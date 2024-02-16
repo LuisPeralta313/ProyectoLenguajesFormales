@@ -27,6 +27,8 @@ namespace Proyecto_Fase_Uno
             int cantidadTokens = 0;
             int cantidadConjuntos = 0;
 
+          
+
             //Booleanos de Existencia Verdadera o Falsa
             bool primeraLinea = true;
             bool conjuntosExistentes = false;
@@ -49,11 +51,14 @@ namespace Proyecto_Fase_Uno
                         {
                             conjuntosExistentes = true;
                             MensajeResultado = "Gramática Válida :D";
+                       
+                           
                         }
                         else if (lineaActual.Contains("TOKENS"))
                         {
                             tokensExistentes = true;
-                            MensajeResultado = "Formato Correcto";
+                            MensajeResultado = "Es Válido";
+                           
                         }
                         else
                         {

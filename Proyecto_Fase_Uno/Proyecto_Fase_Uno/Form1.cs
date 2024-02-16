@@ -27,19 +27,24 @@ namespace Proyecto_Fase_Uno
             if (Resultado == DialogResult.OK)
             {
                 VerificarGramatica(AbrirArchivo.FileName);
-
+                
             }
             else
             {
                 MessageBox.Show("Archivo no correcto");
+
+               
             }
         }
         private void VerificarGramatica(string Archivo)
         {
             RTBMostrarGramatica.Select(0, RTBMostrarGramatica.Lines.Length);
-
+           
             try
+
             {
+               
+
                 int linea = 0;
                 string texto = File.ReadAllText(Archivo);
                 ReglasExpresionRegular VerificarReglas = new ReglasExpresionRegular();
@@ -47,17 +52,23 @@ namespace Proyecto_Fase_Uno
                 RTBMostrarGramatica.Text = texto;
                 if (TBMostrarResultado.Text.Contains("Correcto"))
                 {
+                  
                     TBMostrarResultado.ForeColor = Color.Green;
                 }
                 else
                 {
+                
+
+
                     TBMostrarResultado.ForeColor = Color.Red;
 
                     int ContadorLinea = 0;
                     foreach (string item in RTBMostrarGramatica.Lines)
                     {
+                       
                         if (linea - 1 == ContadorLinea)
                         {
+
                             RTBMostrarGramatica.Select(RTBMostrarGramatica.GetFirstCharIndexFromLine(ContadorLinea), item.Length);
                         }
                     }
@@ -69,6 +80,16 @@ namespace Proyecto_Fase_Uno
 
                 throw;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

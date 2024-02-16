@@ -18,3 +18,13 @@ C:\Users\Luis_Sempai\Desktop\ProyectoMoises\ProyectoLenguajesFormales\Proyecto_F
 C:\Users\Luis_Sempai\Desktop\ProyectoMoises\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\bin\Debug\Proyecto_Fase_Uno.pdb
 C:\Users\Luis_Sempai\Desktop\ProyectoMoises\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.exe
 C:\Users\Luis_Sempai\Desktop\ProyectoMoises\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.pdb
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\bin\Debug\Proyecto_Fase_Uno.exe.config
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\bin\Debug\Proyecto_Fase_Uno.exe
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\bin\Debug\Proyecto_Fase_Uno.pdb
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.AssemblyReference.cache
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.Form1.resources
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.Properties.Resources.resources
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.GenerateResource.cache
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.csproj.CoreCompileInputs.cache
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.exe
+C:\Users\usuario Local\Desktop\Reposi\ProyectoLenguajesFormales\Proyecto_Fase_Uno\Proyecto_Fase_Uno\obj\Debug\Proyecto_Fase_Uno.pdb
