@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Action.cs" />
+    <Compile Include="Clases\Action.cs" />
     <Compile Include="Classes\ET.cs" />
     <Compile Include="Classes\Follow.cs" />
     <Compile Include="Classes\FollowTable.cs" />
