@@ -21,8 +21,21 @@ namespace ProyectoLFA.Clases
 
 
         /////////////////////////////////////////////////////////
-        
 
+        public const string Char_Separator = "'";
+
+        public const string AbrevLetrasMinus = "[a-z]";
+        public const string MinusChar = "©";
+
+        public const string AbrevLetrasMayus = "[A-Z]";
+        public const string MayusChar = "®";
+
+        public const string AbrevNumbers = "[0-9]";
+        public const string Numbers = "Ø";
+
+        public const string AbrevSymbols = "[Simbolo]";
+    
+        public const string Symbols = "ƒ";
 
     }
 }
