@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Action.cs" />
+    <Compile Include="Clases\GrammarFormat.cs" />
+    <Compile Include="Clases\Node.cs" />
+    <Compile Include="Clases\RegularExpression.cs" />
     <Compile Include="Classes\ET.cs" />
     <Compile Include="Classes\Follow.cs" />
     <Compile Include="Classes\FollowTable.cs" />
