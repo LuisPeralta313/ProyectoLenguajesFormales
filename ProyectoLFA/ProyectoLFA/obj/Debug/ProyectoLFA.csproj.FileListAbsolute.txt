@@ -10,3 +10,13 @@ C:\Users\nossu\Desktop\Proyecto Fase  2\ProyectoLFA\ProyectoLFA\ProyectoLFA\bin\
 C:\Users\nossu\Desktop\Proyecto Fase  2\ProyectoLFA\ProyectoLFA\ProyectoLFA\bin\Debug\ProyectoLFA.pdb
 C:\Users\nossu\Desktop\Proyecto Fase  2\ProyectoLFA\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.exe
 C:\Users\nossu\Desktop\Proyecto Fase  2\ProyectoLFA\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.pdb
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.csproj.AssemblyReference.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.csproj.SuggestedBindingRedirects.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.Form2.resources
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.FileAnalyser.resources
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.Properties.Resources.resources
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.TransitionsView.resources
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.csproj.GenerateResource.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.csproj.CoreCompileInputs.cache
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.exe
+C:\Users\rodri\OneDrive\Documentos\Cursos de la U\Lenguajes formales y automotas\ProyectoLenguajesFormales\ProyectoLFA\ProyectoLFA\obj\Debug\ProyectoLFA.pdb
