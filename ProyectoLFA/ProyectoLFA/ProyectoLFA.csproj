@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Clases\Action.cs" />
     <Compile Include="Clases\Follow.cs" />
+    <Compile Include="Clases\FollowTable.cs" />
     <Compile Include="Clases\GrammarFormat.cs" />
     <Compile Include="Clases\Node.cs" />
     <Compile Include="Clases\RegularExpression.cs" />
