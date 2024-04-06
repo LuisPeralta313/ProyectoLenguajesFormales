@@ -1,4 +1,4 @@
-﻿using ProyectoLFA.Classes;
+﻿using ProyectoLFA.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace ProyectoLFA.Clases
 {
-    public class ET
+    public class ET : CharSET
     {
         public Node root;
         public string expression;

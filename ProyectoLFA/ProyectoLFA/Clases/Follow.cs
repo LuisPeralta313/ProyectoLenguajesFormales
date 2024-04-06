@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoLFA.Clases
 {
-    class Follow
+     public class Follow
     {
         public string character { get; set; }
         public bool isAcceptanceStatus { get; set; }

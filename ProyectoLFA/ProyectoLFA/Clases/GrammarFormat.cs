@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace ProyectoLFA.Classes
+namespace ProyectoLFA.Clases
 {
     public class GrammarFormat
     {

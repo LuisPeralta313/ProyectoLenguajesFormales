@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoLFA.Classes
+namespace ProyectoLFA.Clases
 {
     //Gets, save and build a simple regular expression for AFD [3rd fase]
     class RegularExpression : CharSET
