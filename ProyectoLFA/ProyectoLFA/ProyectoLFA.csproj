@@ -47,11 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Action.cs" />
+    <Compile Include="Clases\CharSET.cs" />
+    <Compile Include="Clases\ET.cs" />
     <Compile Include="Clases\Follow.cs" />
     <Compile Include="Clases\FollowTable.cs" />
     <Compile Include="Clases\GrammarFormat.cs" />
     <Compile Include="Clases\Node.cs" />
     <Compile Include="Clases\RegularExpression.cs" />
+    <Compile Include="Clases\Token.cs" />
+    <Compile Include="Clases\Transition.cs" />
+    <Compile Include="Clases\TransitionT.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>

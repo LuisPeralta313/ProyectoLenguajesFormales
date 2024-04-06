@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProyectoLFA.Classes;
+using ProyectoLFA.Clases;
 namespace ProyectoLFA
 {
     public partial class FileAnalyser : Form
@@ -55,7 +55,7 @@ namespace ProyectoLFA
                     int line1 = 0;
                     string text = File.ReadAllText(file);
                     //Send line
-                    TResult.Text = Classes.GrammarFormat.AnalyseFile(text, ref line1);
+                    TResult.Text = Clases.GrammarFormat.AnalyseFile(text, ref line1);
                     RTBGrammar.Text = text;
 
                     if (TResult.Text.Contains("Correcto"))
@@ -64,7 +64,7 @@ namespace ProyectoLFA
                         TResult.ForeColor = Color.Green;
                         TransitionBTN.Visible = true;
 
-                        ExpressionTree = Classes.GrammarFormat.GetExpressionTree(RTBGrammar.Text);
+                        ExpressionTree = Clases.GrammarFormat.GetExpressionTree(RTBGrammar.Text);
                     }
                     else
                     {

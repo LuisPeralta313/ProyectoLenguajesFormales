@@ -141,7 +141,6 @@ namespace ProyectoLFA
             this.label2.Size = new System.Drawing.Size(125, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Ingrese la Gramatica";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // FileAnalyser
             // 
