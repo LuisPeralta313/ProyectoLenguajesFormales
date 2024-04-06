@@ -9,15 +9,15 @@ namespace ProyectoLFA.Clases
 
     public class FollowTable : CharSET
     {
-        //Dictionary with posible next positions
+        // Diccionario con las posibles siguientes posiciones
         public List<Follow> nodes = new List<Follow>();
 
         public FollowTable(ET tree)
         {
-            nodes.Add(new Follow(Epsilon)); //Set apart first position, to use it later as an initial state
-            evaluateTree(tree.root); //Get all the follows
+            nodes.Add(new Follow(Epsilon)); // Se aparta la primera posición, para usarla luego como estado inicial
+            evaluateTree(tree.root); //Conseguir todos los follow
 
-            //Initial state
+            //Inicializando
             nodes[0].follows = tree.root.firstPos;
         }
 
@@ -56,8 +56,9 @@ namespace ProyectoLFA.Clases
 
                     if (node.expresion == Concatenation && node.Left != null && node.Right != null)
                     {
-                        //Being "i" a position in lastPos(c1) 
-                        //Then all positions in firstPos(c2) are in followPos(i)
+                        // Si "i" es una posición en lastPos(c1) 
+                        // Entonces todas las posiciones en firstPos(c2) están en followPos(i)
+
 
                         foreach (var item in node.Left.lastPos)
                         {
@@ -67,8 +68,9 @@ namespace ProyectoLFA.Clases
                     }
                     else if (node.expresion == Plus || node.expresion == Star)
                     {
-                        //Being "n" this node and "i" a position in lastPos(n) 
-                        //Then all positions in firstPos(n) are in followPos(i)
+                        // Si "n" es este nodo y "i" es una posición en lastPos(n) 
+                        // Entonces todas las posiciones en firstPos(n) están en followPos(i)
+
 
                         foreach (var item in node.lastPos)
                         {

@@ -6,28 +6,37 @@ using System.Threading.Tasks;
 
 namespace ProyectoLFA.Clases
 {
+    /// <summary>
+    /// Representa un token definido en el archivo.
+    /// </summary>
     public class Token
     {
         /// <summary>
-        /// Number defined in file
+        /// Número definido en el archivo.
         /// </summary>
         public int TokenNumber;
 
         /// <summary>
-        /// List of ascii codes for the last character in an individual token.
+        /// Lista de códigos ASCII para el primer carácter en un token individual.
         /// </summary>
         public List<char> FirstPositions = new List<char>();
 
         /// <summary>
-        /// List of ascii codes for the last character in an individual token.
+        /// Lista de códigos ASCII para el último carácter en un token individual.
         /// </summary>
         public List<char> LastPositions = new List<char>();
 
-        public Token(int tokenNumber, List<char> FirstPosition, List<char> LastPosition)
+        /// <summary>
+        /// Constructor para inicializar un nuevo token con su número, y las listas de posiciones iniciales y finales.
+        /// </summary>
+        /// <param name="tokenNumber">Número del token.</param>
+        /// <param name="firstPosition">Lista de códigos ASCII para el primer carácter en el token.</param>
+        /// <param name="lastPosition">Lista de códigos ASCII para el último carácter en el token.</param>
+        public Token(int tokenNumber, List<char> firstPosition, List<char> lastPosition)
         {
             this.TokenNumber = tokenNumber;
-            this.FirstPositions = FirstPosition;
-            this.LastPositions = LastPosition;
+            this.FirstPositions = firstPosition;
+            this.LastPositions = lastPosition;
         }
     }
 }

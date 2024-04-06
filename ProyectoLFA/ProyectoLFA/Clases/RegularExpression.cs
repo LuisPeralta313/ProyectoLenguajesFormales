@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProyectoLFA.Clases
 {
-    //Gets, save and build a simple regular expression for AFD [3rd fase]
+    // Obtiene, guarda y construye una expresión regular simple para un AFD [3ra fase]
     class RegularExpression : CharSET
     {
-        //Constructor
+        // Constructor
         public RegularExpression(string exp)
         {
             exp = simplifyExpression(exp);
         }
 
+        // Método para simplificar la expresión regular (actualmente no hace nada)
         private string simplifyExpression(string expression)
         {
             return expression;
         }
-
-
     }
 }

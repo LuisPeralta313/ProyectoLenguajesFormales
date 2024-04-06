@@ -6,39 +6,37 @@ using System.Threading.Tasks;
 
 namespace ProyectoLFA.Clases
 {
+    // Clase que representa un nodo en un árbol de expresiones regulares
     public class Node
     {
-        public string expresion { set; get; }
-        public Node Left { set; get; }
-        public Node Right { set; get; }
-        public int number { set; get; }
-        public List<int> firstPos { set; get; }
-        public List<int> lastPos { set; get; }
-        public bool nullable { set; get; }
-        public bool isSet { set; get; }
+        public string expresion { set; get; }  // Expresión que contiene el nodo
+        public Node Left { set; get; }  // Nodo izquierdo
+        public Node Right { set; get; }  // Nodo derecho
+        public int number { set; get; }  // Número asignado al nodo
+        public List<int> firstPos { set; get; }  // Lista de las primeras posiciones del nodo en el árbol
+        public List<int> lastPos { set; get; }  // Lista de las últimas posiciones del nodo en el árbol
+        public bool nullable { set; get; }  // Indica si el nodo es nulo o no
+        public bool isSet { set; get; }  // Indica si el nodo está establecido o no
 
+        // Constructores
         public Node() { }
         public Node(string exp)
         {
             this.expresion = exp;
-
             firstPos = new List<int>();
             lastPos = new List<int>();
-
         }
 
-        //To modify the value of the boolean isSet
+        // Método para modificar el valor del booleano isSet
         public Node(string element, bool isSet)
         {
             this.expresion = element;
             this.isSet = isSet;
-
             firstPos = new List<int>();
             lastPos = new List<int>();
-
         }
 
-        //Equalize nodes left and right with all data
+        // Iguala los nodos izquierdo y derecho con todos los datos
         public Node(string exp, Node left, Node right)
         {
             this.expresion = exp;
@@ -46,7 +44,7 @@ namespace ProyectoLFA.Clases
             this.Right = right;
         }
 
-        //initialize the value of the variables
+        // Inicializa el valor de las variables
         public Node(string exp, string left, string right)
         {
             this.expresion = exp;
@@ -54,20 +52,19 @@ namespace ProyectoLFA.Clases
             this.Right = new Node(right);
         }
 
-
-
-
-        //Returns true when the actual node has null values in left and right nodes.
+        // Devuelve true cuando el nodo actual tiene valores nulos en los nodos izquierdo y derecho
         public bool isLeaf()
         {
             return Left == null && Right == null;
         }
 
-        //ROUTE METHOD: INORDER
+        // Método de recorrido: INORDEN
         public string Inorder()
         {
             return Inorder(this);
         }
+
+        // Método auxiliar para recorrido inorden
         private string Inorder(Node root)
         {
             string result = "";
@@ -86,6 +83,5 @@ namespace ProyectoLFA.Clases
 
             return result;
         }
-
     }
 }

@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 
 namespace ProyectoLFA.Clases
 {
+    /// <summary>
+    /// Representa una transición en la tabla de transiciones para el análisis léxico.
+    /// </summary>
     public class Transition
     {
-
-        //Symbol to access at the status: terminal symbol
+        // Símbolo para acceder al estado: símbolo terminal
         public string symbol { get; }
 
-
-        //Set of "follows" of the actual status
+        // Conjunto de "follows" del estado actual
         public List<int> nodes { get; }
 
-        //When the status has the EndCharcter, the boolean variable is true
+        // Cuando el estado tiene el EndCharacter, la variable booleana es verdadera
         public bool isAcceptanceStatus { get; }
 
-        // To create a new transition when follow values of the status is a new set
+        // Constructor para crear una nueva transición cuando los valores de follow del estado son un nuevo conjunto
         public Transition(string simbolo, List<int> nodos)
         {
             symbol = simbolo;
