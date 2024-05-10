@@ -54,6 +54,7 @@
     <Compile Include="Clases\GrammarFormat.cs" />
     <Compile Include="Clases\Node.cs" />
     <Compile Include="Clases\RegularExpression.cs" />
+    <Compile Include="Clases\Scanner.cs" />
     <Compile Include="Clases\Token.cs" />
     <Compile Include="Clases\Transition.cs" />
     <Compile Include="Clases\TransitionT.cs" />
