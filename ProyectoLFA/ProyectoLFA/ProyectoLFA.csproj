@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Clases\Action.cs" />
     <Compile Include="Clases\CharSET.cs" />
+    <Compile Include="Clases\DFA.cs" />
     <Compile Include="Clases\ET.cs" />
     <Compile Include="Clases\Follow.cs" />
     <Compile Include="Clases\FollowTable.cs" />
