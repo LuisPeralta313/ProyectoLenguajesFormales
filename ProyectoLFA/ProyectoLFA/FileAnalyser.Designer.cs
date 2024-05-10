@@ -38,6 +38,7 @@ namespace ProyectoLFA
             this.button2 = new System.Windows.Forms.Button();
             this.TransitionBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BTNUpload
@@ -142,12 +143,26 @@ namespace ProyectoLFA
             this.label2.TabIndex = 8;
             this.label2.Text = "Ingrese la Gramatica";
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.DarkOrange;
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(709, 140);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(73, 27);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Generador";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // FileAnalyser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(840, 236);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TransitionBTN);
             this.Controls.Add(this.button2);
@@ -178,6 +193,7 @@ namespace ProyectoLFA
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button TransitionBTN;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

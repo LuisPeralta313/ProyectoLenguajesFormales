@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoLFA.Clases;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
+using System.Reflection;
 namespace ProyectoLFA
 {
     public partial class FileAnalyser : Form
@@ -146,6 +150,67 @@ namespace ProyectoLFA
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            
+                string[] sourceCode = ScannerGenerator.GetSourceCode(ExpressionTree);
+
+                VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog
+                {
+                    RootFolder = Environment.SpecialFolder.Desktop,
+                    SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                    ShowNewFolderButton = true
+                };
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string Output = "Scanner.exe";
+                    string path = Path.Combine(dialog.SelectedPath, Output);
+
+                    //AQUÍ GUARDAMOS EL ARCHIVO DE JAVA
+
+                    File.WriteAllText(Path.Combine(dialog.SelectedPath, "Scanner.py"), sourceCode[1]);
+
+                    //Compilamos nuestro código
+
+                    CSharpCodeProvider codeProvider = new CSharpCodeProvider();
+
+
+                    CompilerParameters parameters = new CompilerParameters
+                    { GenerateExecutable = true, OutputAssembly = path };
+
+                    parameters.ReferencedAssemblies.AddRange(
+                        Assembly.GetExecutingAssembly().GetReferencedAssemblies().
+                            Select(a => a.Name + ".dll").ToArray());
+
+
+                    CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, sourceCode[0]);
+
+                    if (results.Errors.Count > 0)
+                    {
+                        TResult.ForeColor = Color.Red;
+                        TResult.Text = "";
+                        foreach (CompilerError CompErr in results.Errors)
+                        {
+                            TResult.Text = TResult.Text +
+                                                 @"Line number " + CompErr.Line +
+                                                 @", Error Number: " + CompErr.ErrorNumber +
+                                                 ", '" + CompErr.ErrorText + ";" +
+                                                 Environment.NewLine + Environment.NewLine;
+                        }
+                    }
+                    else
+                    {
+                        //Compilamos y ejecutamos el código.
+                        TResult.ForeColor = Color.BlueViolet;
+                        TResult.Text = @"Tu scanner está listo.";
+                        Process.Start(path);
+                    }
+                }
+
+            
         }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoLFA.Properties {
+namespace ProyectoLFA.Clases {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace ProyectoLFA.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Resource1 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource1() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ProyectoLFA.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProyectoLFA.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProyectoLFA.Clases.Resource1", typeof(Resource1).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,12 +61,63 @@ namespace ProyectoLFA.Properties {
         }
         
         /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        ///   Busca una cadena traducida similar a import time
+        ///
+        ///def get_stack(input_string):
+        ///    # Se invierte la cadena para simular la pila
+        ///    return list(reversed(input_string))
+        ///
+        ///def error():
+        ///    print(&quot;\nError: La cadena no es válida&quot;)
+        ///
+        ///def valido(token):
+        ///    print(&quot;\n&quot; + token + &quot; » &quot; + str(get_token_number(token)))
+        ///    return &quot;&quot;
+        ///
+        ///def get_token_number(text):
+        ///    first_character_from_text = text[0]
+        ///    last_character_from_text = text[-1]
+        ///
+        ///    character_token_first = {
+        ///# Define aquí los tokens correspondientes
+        ///}
+        ///
+        ///character_token_las [resto de la cadena truncado]&quot;;.
         /// </summary>
-        internal static System.Drawing.Bitmap Constitución {
+        internal static string Final {
             get {
-                object obj = ResourceManager.GetObject("Constitución", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a using System;
+        ///using System.Collections.Generic;
+        ///using System.Linq;
+        ///using System.Threading;
+        ///using System.Windows.Forms;
+        ///
+        ///namespace Scanner
+        ///{
+        ///    class Program
+        ///    {
+        ///        static void Main(string[] args)
+        ///        {
+        ///            Stack&lt;char&gt; Input = new Stack&lt;char&gt;();
+        ///
+        ///            Inicio:
+        ///
+        ///            Console.Write(&quot;\nEscriba la cadena para analizar: &quot;);
+        ///            Input = getStack(Console.ReadLine());
+        ///
+        ///            Console.Write(&quot;\nAnalizando&quot;);
+        ///            Thread.Sleep(300);
+        ///            Console.Write(&quot;.&quot;);
+        ///   [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Program {
+            get {
+                return ResourceManager.GetString("Program", resourceCulture);
             }
         }
     }

@@ -26,6 +26,9 @@ namespace ProyectoLFA.Clases
         /// </summary>
         public Dictionary<string, string[]> sets = new Dictionary<string, string[]>();
 
+
+        public List<Action> actions = new List<Action>();
+        public Dictionary<int, string> actionReference = new Dictionary<int, string>();
         /// <summary>
         /// Lista de tokens utilizados en la expresión regular.
         /// </summary>
