@@ -1,18 +1,20 @@
-﻿using System;
+﻿using Microsoft.CSharp;
+using ProyectoLFA.Classes;
+using System;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using ProyectoLFA.Clases;
-using Microsoft.CSharp;
-using System.CodeDom.Compiler;
-using System.Diagnostics;
-using System.Reflection;
+using Ookii.Dialogs.WinForms;
+
 namespace ProyectoLFA
 {
     public partial class FileAnalyser : Form
@@ -47,64 +49,40 @@ namespace ProyectoLFA
                 MessageBox.Show(@"Error al leer el archivo.");
             }
         }
-            private void AnalizarArchivo(string file)
+        private void AnalizarArchivo(string file)
+        {
+            TransitionBTN.Visible = false;
+            TXTPath.Text = file;
+            RTBGrammar.Select(0, RTBGrammar.Lines.Length);
+            RTBGrammar.SelectionColor = Color.Black;
+
+            try
             {
-                TransitionBTN.Visible = false;
-                TXTPath.Text = file;
-                RTBGrammar.Select(0, RTBGrammar.Lines.Length);
-                RTBGrammar.SelectionColor = Color.Black;
+                int line1 = 0;
+                string text = File.ReadAllText(file);
+                //Send line
+                TResult.Text = Classes.GrammarFormat.AnalyseFile(text, ref line1);
+                RTBGrammar.Text = text;
 
-                try
+                if (TResult.Text.Contains("Correcto"))
                 {
-                    int line1 = 0;
-                    string text = File.ReadAllText(file);
-                    //Send line
-                    TResult.Text = Clases.GrammarFormat.AnalyseFile(text, ref line1);
-                    RTBGrammar.Text = text;
+                    TResult.BackColor = Color.LightGray;
+                    TResult.ForeColor = Color.Cyan;
+                    TransitionBTN.Visible = true;
 
-                    if (TResult.Text.Contains("Correcto"))
-                    {
-                        TResult.BackColor = Color.LightGray;
-                        TResult.ForeColor = Color.Green;
-                        TransitionBTN.Visible = true;
-
-                        ExpressionTree = Clases.GrammarFormat.GetExpressionTree(RTBGrammar.Text);
-                    }
-                    else
-                    {
-                        TResult.BackColor = Color.LightGray;
-                        TResult.ForeColor = Color.Crimson;
-
-                        //Ubicacion del error
-                        int lineCounter = 0;
-
-                        foreach (string line in RTBGrammar.Lines)
-                        {
-                            if (line1 - 1 == lineCounter)
-                            {
-                                RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
-                                RTBGrammar.SelectionColor = Color.Red;
-                            }
-                            lineCounter++;
-                        }
-                    }
-
+                    ExpressionTree = Classes.GrammarFormat.GetExpressionTree(RTBGrammar.Text);
                 }
-                catch (Exception ex)
+                else
                 {
-
                     TResult.BackColor = Color.LightGray;
                     TResult.ForeColor = Color.Crimson;
-                    TResult.Text = @"Error en TOKENS";
-                TransitionBTN.Visible = false;
-                    MessageBox.Show(ex.Message);
 
-                    //Show in red all lines in tokens
+                    //Ubicacion del error
                     int lineCounter = 0;
 
                     foreach (string line in RTBGrammar.Lines)
                     {
-                        if (line.Contains("TOKEN"))
+                        if (line1 - 1 == lineCounter)
                         {
                             RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
                             RTBGrammar.SelectionColor = Color.Red;
@@ -112,7 +90,31 @@ namespace ProyectoLFA
                         lineCounter++;
                     }
                 }
+
             }
+            catch (Exception ex)
+            {
+
+                TResult.BackColor = Color.LightGray;
+                TResult.ForeColor = Color.Crimson;
+                TResult.Text = @"Error en TOKENS";
+                TransitionBTN.Visible = false;
+                MessageBox.Show(ex.Message);
+
+                //Show in red all lines in tokens
+                int lineCounter = 0;
+
+                foreach (string line in RTBGrammar.Lines)
+                {
+                    if (line.Contains("TOKEN"))
+                    {
+                        RTBGrammar.Select(RTBGrammar.GetFirstCharIndexFromLine(lineCounter), line.Length);
+                        RTBGrammar.SelectionColor = Color.Red;
+                    }
+                    lineCounter++;
+                }
+            }
+        }
 
         private void TResult_TextChanged(object sender, EventArgs e)
         {
@@ -146,7 +148,7 @@ namespace ProyectoLFA
                 TransitionsView tables = new TransitionsView(ExpressionTree, follows, transitions);
                 tables.Show();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -154,64 +156,63 @@ namespace ProyectoLFA
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            
-                string[] sourceCode = ScannerGenerator.GetSourceCode(ExpressionTree);
+            string[] sourceCode = ScannerGenerator.GetSourceCode(ExpressionTree);
 
-                VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog
+            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog
+            {
+                RootFolder = Environment.SpecialFolder.Desktop,
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                ShowNewFolderButton = true
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string Output = "Scanner.exe";
+                string path = Path.Combine(dialog.SelectedPath, Output);
+
+                //AQUÍ GUARDAMOS EL ARCHIVO DE JAVA
+
+                File.WriteAllText(Path.Combine(dialog.SelectedPath, "Scanner.java"), sourceCode[1]);
+
+                //Compilamos nuestro código
+
+                CSharpCodeProvider codeProvider = new CSharpCodeProvider();
+
+
+                CompilerParameters parameters = new CompilerParameters
+                { GenerateExecutable = true, OutputAssembly = path };
+
+                parameters.ReferencedAssemblies.AddRange(
+                    Assembly.GetExecutingAssembly().GetReferencedAssemblies().
+                        Select(a => a.Name + ".dll").ToArray());
+
+
+                CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, sourceCode[0]);
+
+                if (results.Errors.Count > 0)
                 {
-                    RootFolder = Environment.SpecialFolder.Desktop,
-                    SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                    ShowNewFolderButton = true
-                };
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    string Output = "Scanner.exe";
-                    string path = Path.Combine(dialog.SelectedPath, Output);
-
-                    //AQUÍ GUARDAMOS EL ARCHIVO DE JAVA
-
-                    File.WriteAllText(Path.Combine(dialog.SelectedPath, "Scanner.py"), sourceCode[1]);
-
-                    //Compilamos nuestro código
-
-                    CSharpCodeProvider codeProvider = new CSharpCodeProvider();
-
-
-                    CompilerParameters parameters = new CompilerParameters
-                    { GenerateExecutable = true, OutputAssembly = path };
-
-                    parameters.ReferencedAssemblies.AddRange(
-                        Assembly.GetExecutingAssembly().GetReferencedAssemblies().
-                            Select(a => a.Name + ".dll").ToArray());
-
-
-                    CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, sourceCode[0]);
-
-                    if (results.Errors.Count > 0)
+                    TResult.ForeColor = Color.Red;
+                    TResult.Text = "";
+                    foreach (CompilerError CompErr in results.Errors)
                     {
-                        TResult.ForeColor = Color.Red;
-                        TResult.Text = "";
-                        foreach (CompilerError CompErr in results.Errors)
-                        {
-                            TResult.Text = TResult.Text +
-                                                 @"Line number " + CompErr.Line +
-                                                 @", Error Number: " + CompErr.ErrorNumber +
-                                                 ", '" + CompErr.ErrorText + ";" +
-                                                 Environment.NewLine + Environment.NewLine;
-                        }
-                    }
-                    else
-                    {
-                        //Compilamos y ejecutamos el código.
-                        TResult.ForeColor = Color.BlueViolet;
-                        TResult.Text = @"Tu scanner está listo.";
-                        Process.Start(path);
+                        TResult.Text = TResult.Text +
+                                             @"Line number " + CompErr.Line +
+                                             @", Error Number: " + CompErr.ErrorNumber +
+                                             ", '" + CompErr.ErrorText + ";" +
+                                             Environment.NewLine + Environment.NewLine;
                     }
                 }
+                else
+                {
+                    //Compilamos y ejecutamos el código.
+                    TResult.ForeColor = Color.BlueViolet;
+                    TResult.Text = @"Tu scanner está listo.";
+                    Process.Start(path);
+                }
+            }
 
-            
         }
     }
 }
+
 
